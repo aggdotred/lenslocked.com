@@ -10,6 +10,7 @@ import (
 func main() {
 	staticC := controllers.NewStatic()
 	usersC := controllers.NewUsers()
+	galleriesC := controllers.NewGalleries()
 
 	r := mux.NewRouter()
 	r.Handle("/", staticC.Home).Methods("GET")
@@ -17,5 +18,7 @@ func main() {
 	r.Handle("/faq", staticC.Faq).Methods("GET")
 	r.HandleFunc("/signup", usersC.New).Methods("GET")
 	r.HandleFunc("/signup", usersC.Create).Methods("POST")
+	r.HandleFunc("/galleries/new", galleriesC.New).Methods("GET")
+	r.HandleFunc("/galleries/new", galleriesC.Create).Methods("POST")
 	http.ListenAndServe(":3000", r)
 }

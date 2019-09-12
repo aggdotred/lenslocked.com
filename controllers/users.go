@@ -7,12 +7,6 @@ import (
 	"github.com/aggdotred/lenslocked.com/views"
 )
 
-func NewUsers() *Users {
-	return &Users{
-		NewView: views.NewView("bootstrap", "users/new"),
-	}
-}
-
 type Users struct {
 	NewView *views.View
 }
@@ -20,6 +14,12 @@ type Users struct {
 type SignupForm struct {
 	Email    string `schema:"email"`
 	Password string `schema:"password"`
+}
+
+func NewUsers() *Users {
+	return &Users{
+		NewView: views.NewView("bootstrap", "users/new"),
+	}
 }
 
 // New is used to render the form where a user can create a new user account.
